@@ -2,6 +2,8 @@
 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
+Please note i am not the orginal creator of this directory, this is more a note of what i used to build the Patchlabs Poseidon syringe pump. As i had no utility for the microscope details to do with the microscope have been removed 
+
 ## poseidon: Open source bioinstrumentation
 An easy-to-use, highly customizable, and open source syringe pump and microscope system.
 
@@ -31,14 +33,12 @@ The poseidon syringe pump and microscope system is an open source alternative to
 ### 3D printing components and purchasing hardware
 The 3D printed components can be fabricated on any desktop fused filament fabrication (FFF) 3D printer. They were designed using [Autodesk Fusion 360](http://autodesk.com/fusion360), a proprietary CAD software that offers free academic licenses.
 
-- Fusion360 interactive view of [poseidon microscope CAD](http://a360.co/2krZoEk).
 - Fusion360 interactive view of [poseidon pump](https://a360.co/2Ph19kC).
 - STL, STEP, IGES, Fusion 360 archive files, and bill of materials are available in the `HARDWARE/` folder.
 - Bill of materials with prices and vendor links on a [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1AHBLf0PbtGDgqNbbK6QO31s7ES9_1uCw_NeKWHHPTM4/edit?usp=sharing).
 
 ### Build Videos
 Syringe Pump: https://www.youtube.com/watch?v=7YSiO6usR1M  
-Microscope  : https://www.youtube.com/watch?v=Szg-vjukonA  
 Arduino     : https://www.youtube.com/watch?v=Xl02fsRCJ7U  
 Raspberry Pi: https://www.youtube.com/watch?v=g3pXNY8snOg  
 
@@ -46,7 +46,7 @@ Running poseidon: https://youtu.be/VmoB_fPc4L4
 
 ### Setting up the Arduino 
 We use the [Arduino CNC shield](http://wiki.keyestudio.com/index.php/Ks0095_Arduino_CNC_Kit_/_CNC_Shield_V3.0_%2Bkeyestudio_Uno_R3%2B4pcs_a4988_Driver_/_GRBL_Compatible)
-to allow for up to three pumps can be controlled from a computer or from the Rapsberry Pi microscope.
+to allow for up to three pumps can be controlled from a computer or from a Rapsberry Pi.
 
 The software is configured to run the stepper motors with 200 steps per revolution at 1/32 microstepping, which translates to 6400 steps per rotation. To configure this, it is necessary to add 3 jumpers between the M0, M1 and M2 pins of the Arduino CNC shield. More information about microstepping can be found in the product page for the [DRV8825 Stepper Motor Driver](https://www.pololu.com/product/2133), which is used by the CNC shield. See the build videos for more detail. 
 
@@ -57,7 +57,7 @@ The Arduino should be flashed with the `arduino_serialCOM_v0.1.ino` sketch, avai
 The pumps are driven by an Arduino board that interprets commands sent via USB and sends the signals to control the stepper motor movement. For directions on how to flash an arduino please refer to the official guide: https://www.arduino.cc/en/Guide/HomePage
 
 ### Installing software
-The Python scripts are available in the `SOFTWARE/` folder. The GUI was created using [Qt designer](http://doc.qt.io/qt-5/qtdesigner-manual.html), a drag and drop application for organizing buttons that allows the used to easily make modifications. This GUI is used to interface with a Python script that controls both the microscope and Arduino via USB. 
+The Python scripts are available in the `SOFTWARE/` folder. The GUI was created using [Qt designer](http://doc.qt.io/qt-5/qtdesigner-manual.html), a drag and drop application for organizing buttons that allows the used to easily make modifications. This GUI is used to interface with a Python script that controls the Arduino via USB. 
 
 The software you will need to run on your computer in order to control the Arduino is the `poseidon_main.py` script located in the `SOFTWARE/` folder (also included is `poseidon_controller_gui.py` which is needed). 
 
@@ -66,7 +66,7 @@ You have the option of either (1) running from the source code in Python or (2) 
 ## Startup Checklist
 Before starting the Python controller, make sure
 1. The Arduino has the firmware uploaded to it
-2. The Arduino is connected via USB to the computer or Rapsberry Pi microscope
+2. The Arduino is connected via USB to the computer or Rapsberry Pi 
 3. You have appropriately placed jumpers on the CNC Sheild to allow for microstepping and hardware enabling (discussed in build video).
 4. The CNC shield is powered, and that all motors are plugged in to the CNC sheild
 
@@ -149,7 +149,7 @@ The poseidon system was designed to be customizable. It uses the [Raspberry Pi](
 
 The pump driver uses an Arduino with a [CNC shield](https://blog.protoneer.co.nz/arduino-cnc-shield/) to run up to three pumps. Each pump has a stepper motor that drives lead screw which in turn moves a sled that is mounted on linear bearings. The displacement of the sled moves the syringe forward or backward allowing the user to dispel or intake liquid.
 
-The controller station uses a Raspberry Pi with a touchscreen to connect to the Arduino and microscope via USB. Because the microscope and Arduino use USB connections, they can alternatively be connected to a computer instead of a Raspberry Pi. 
+The controller station uses a Raspberry Pi with a touchscreen to connect to the Arduino via USB. Because the Arduino uses a USB connections, they can alternatively be connected to a computer instead of a Raspberry Pi. 
 
 To modify the 3D models, users can either use Fusion 360 or any other CAD software. Simply open up the components, located in the `HARDWARE` folder, and get editing! Once you're done, go ahead and print out the parts and assemble them.
 
@@ -208,8 +208,6 @@ Bas Wijnen, Emily J. Hunt, Gerald C. Anzalone, Joshua M. Pearce <br>
 PLOS One, 2014. https://doi.org/10.1371/journal.pone.0107216](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0107216)
 
 With subsequent refinements published on [http://www.appropedia.org/Open-source_syringe_pump](http://www.appropedia.org/Open-source_syringe_pump)
-
-The microscope was based on a design published by the [Satija Lab](http://satijalab.org/):
 
 [Single-Cell Single-cell RNA-seq of rheumatoid arthritis synovial tissue using low-cost microfluidic instrumentation <br>
 William Stephenson, Laura T. Donlin, Andrew Butler, Cristina Rozo, Ali Rashidfarrokhi, Susan M. Goodman, Lionel B. Ivashkiv, Vivian P. Bykerk, Dana E. Orange, Robert B. Darnell, Harold P. Swerdlow, Rahul Satija <br>
